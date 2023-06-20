@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{home}">Home</title>
+    <thymeleaf th:insert="includes::header_includes" />
+</head>
+<body>
+
+<header th:insert="~{navbar::navbar(page='home')}">navbar</header>
+
+
+<div id="carousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://www.billiebonkers.be/uploads/images/social/_1200x630_crop_center-center_none/20152/study-in-flanders-case-thumb.png" alt="Study in Flanders" width=100% height="400">
+        </div>
+        <div class="carousel-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Universiteit_Antwerpen_nieuw_logo.svg/1200px-Universiteit_Antwerpen_nieuw_logo.svg.png" alt="University of Antwerp" width=100% height="400">
+        </div>
+        <div class="carousel-item">
+            <img src="https://www.ap.be/sites/default/files/users/user663/AP_logo_staand_rgb.jpg" alt="AP University" width=100% height="400">
+        </div>
+        <div class="carousel-item">
+            <img src="https://www.kdg.be/sites/kdg.be/files/styles/is_normal_image_desktop/public/2022-01/Logo_H_Closed_whitespace.png?h=59a9ba15&itok=14a10PXN" alt="KdG University" width=100% height="400">
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+
+
+<footer th:insert="~{footer::copyright}">&copy; Silviu Dobre</footer>
+
+</body>
+</html>

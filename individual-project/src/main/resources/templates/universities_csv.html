@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="#{upload_universities}">Upload universities</title>
+  <thymeleaf th:insert="includes::header_includes" />
+</head>
+<body>
+<header th:insert="~{navbar::navbar(page='universities_csv')}">navbar</header>
+
+<h1><span th:text="#{upload_csv_file}">Upload CSV file with Universities</span>&#127979;</h1>
+
+<form th:action="@{/universities_csv}" th:method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="universities_csv" class="form-label" th:text="#{select_file_to_upload}">Select a file to upload</label>
+    <input class="form-control" type="file" name="universities_csv" id="universities_csv" />
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+<footer th:insert="~{footer::copyright}">&copy; Silviu Dobre</footer>
+</body>
+</html>

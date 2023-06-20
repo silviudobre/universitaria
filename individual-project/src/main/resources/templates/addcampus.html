@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="#{addacampus}">Add campus</title>
+  <thymeleaf th:insert="includes::header_includes" />
+  <script defer src="/js/bundle-addcampus.js"></script>
+</head>
+<body>
+
+<header th:insert="~{navbar::navbar(page='addcampus')}">navbar</header>
+
+<div class="col-md-4 bg-warning py-2 my-3 rounded mx-auto text-center">
+  <h1 class="display-4 text-white" th:text="#{addacampus}">Add a campus</h1>
+  <form th:object="${campus}" class="rounded bg-danger border-danger m-2">
+
+
+    <div class="form-floating pt-3">
+      <div class="text-white" th:text="#{university}">University</div>
+      <div class="text-white-50 mx-5 px-5" style="text-align: left" th:each="university:${universities}">
+        <input type="radio" class="form-text text-black" name="universityName" th:value="${university.name}" th:text="' ' + ${university.name}" checked>
+      </div>
+      <div id="universityNameError" th:text="#{universitypatternerror}" class="text-black mx-4 ">University Name error</div>
+    </div>
+
+    <div class="form-floating pt-3">
+      <div class="text-white" th:text="#{campus}">Campus</div>
+      <input type="text" class="form-text text-black" id="name" name="name" placeholder="Campus">
+      <div id="campusNameError" th:text="#{generalpatternerror}" class="text-black mx-4">Campus Name error</div>
+    </div>
+
+    <div class="form-floating pt-3">
+      <div class="text-white" th:text="#{address}">Address</div>
+      <input type="text" class="form-text text-black" id="address" name="address" placeholder="Address">
+      <div id="addressError" th:text="#{addresspatternerror}" class="text-black mx-4">Address error</div>
+    </div>
+
+    <div class="form-floating pt-3">
+      <div class="text-white" th:text="#{postalcode}">Postal code</div>
+      <input type="number" class="form-text text-black" id="postalCode" name="postalCode" placeholder="Postal code">
+      <div id="postalCodeError" th:text="#{postalcodeerror}" class="text-black mx-4">Postal code error</div>
+    </div>
+
+    <div class="form-floating pt-3">
+      <div class="text-white" th:text="#{city}">City</div>
+      <input type="text" class="form-text text-black" id="city" name="city" placeholder="City">
+      <div id="cityError" th:text="#{generalpatternerror}" class="text-black mx-4">City error</div>
+    </div>
+
+    <div class="form-floating row pt-3">
+      <div class="col-md-2"></div>
+
+      <div class="col-md-4">
+        <div class="text-white" th:text="#{openingtime}">Opening time</div>
+        <input type="time" class="myFlatPickrTime col-md-8" id="openingTime" name="openingTime" value="08:00">
+      </div>
+
+      <div class="col-md-4">
+        <div class="text-white" th:text="#{closingtime}">Closing time</div>
+        <input type="time" class="myFlatPickrTime col-md-8" id="closingTime" name="closingTime" value="22:00">
+      </div>
+    </div>
+      <div class="form-floating pt-3 text-black mx-4" id="timeError" th:text="#{timepatternerror}">Closing time error</div>
+
+    <div class="form-floating pt-3 pb-3">
+      <label for="submit" class="form-label"></label>
+      <input type="submit" class="btn btn-success" id="submit" name="submit" value="Submit">
+      <div id="successfulSubmission" th:text="#{successfulSubmission}" class="text-black mx-4">Successfully submitted</div>
+    </div>
+  </form>
+</div>
+
+<footer th:insert="~{footer::copyright}">&copy; Silviu Dobre</footer>
+
+</body>
+</html>

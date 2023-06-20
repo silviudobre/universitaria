@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{campuses}">Campuses</title>
+  <thymeleaf th:insert="includes::header_includes" />
+  <script defer src="/js/bundle-campuses.js"></script>
+</head>
+<body>
+
+<header th:insert="~{navbar::navbar(page='campuses')}">navbar</header>
+
+<main>
+  <table class="table table-striped table-hover">
+  <thead class="table-dark sticky-top">
+    <tr>
+      <th class="fst-italic" th:text="#{viewbutton.campus}"><i>campus details</i></th>
+      <th class="fst-italic" th:text="#{deletebutton}"><i>delete</i></th>
+      <th class="col-sm-4" th:text="#{campus}">Campus</th>
+      <th class="col-sm-2" th:text="#{university}">University</th>
+      <th class="col-sm-3" th:text="#{address}">Address</th>
+      <th class="col-sm-1" th:text="#{postalcode}">Postal Code</th>
+      <th class="col-sm-3" th:text="#{city}">City</th>
+      <th class="col-sm-2" th:text="#{openingtime}">Opening Time</th>
+      <th class="col-sm-2" th:text="#{closingtime}">Closing Time</th>
+      <th class="col-sm-1"></th>
+      <th class="col-sm-1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="campus: ${campuses}"  th:class="(${campus.id}%2 ne 0) ? 'table-primary' : 'table-danger'" th:id="'campus_' + ${campus.id}">
+      <td> <a href="./acampus.html" th:href="@{./acampus(campusId=${campus.id})}"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-1024.png" width="50" height="40" alt="view" type="button" class="btn btn-outline-info"/></a></td>
+      <td> <img src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686907-trashcan_can_dump_recycle_bin-512.png" width="50" height="40" alt="delete" type="button" class="btn btn-outline-danger deleteButton"/></td>
+      <td> <input type="text" data-value="name" class="form-control-plaintext input_campus" th:value="${campus.name}"></td>
+      <td> <span class="form-control-plaintext" th:text="${campus.university.name}">universityName</span></td>
+      <td> <input type="text" data-value="address" class="form-control-plaintext input_address" th:value="${campus.address}"></td>
+      <td> <input type="text" data-value="postalCode" class="form-control-plaintext input_postal_code" th:value="${campus.postalCode}"></td>
+      <td> <input type="text" data-value="city" class="form-control-plaintext input_city" th:value="${campus.city}"></td>
+      <td> <input type="time" data-value="openingTime" class="form-control-plaintext input_opening_time" th:value="${campus.openingTime}"></td>
+      <td> <input type="time" data-value="closingTime" class="form-control-plaintext input_closing_time" th:value="${campus.closingTime}"></td>
+      <td> <img src="https://cdn-icons-png.flaticon.com/512/2618/2618245.png" width="50" height="40" alt="update" type="button" class="btn btn-outline-warning resetButton"/> </td>
+      <td> <img src="https://www.i2symbol.com/images/text-symbols/check-symbol.png" width="50" height="40" alt="update" type="button" class="btn btn-outline-success updateButton"/> </td>
+    </tr>
+  </tbody>
+</table>
+</main>
+
+<div style="text-align:center">
+  <img src="https://previews.123rf.com/images/kjnnt/kjnnt1605/kjnnt160500255/56793535-there-s-nothing-here-typography-vector-illustration.jpg" width="210" height="332" alt="no records in table" class="emptyTableImage"/>
+</div>
+
+<footer th:insert="~{footer::copyright}">&copy; Silviu Dobre</footer>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <thymeleaf th:insert="includes::header_includes" />
+</head>
+<body>
+<footer class="navbar navbar-expand-sm py-3 bg-danger text-white fixed-bottom" th:fragment="copyright">
+    <a href="/sessionhistory" class="col-sm-3 nav-link text-white text-end" th:text="#{sessionhistory}">Session history</a>
+    <span class="col-sm-6 text-center">
+        <p>&copy;Silviu Dobre - ACS2, Karel de Grote 2022-2023</p>
+        <select id="locales" class="form-select-sm">
+                <option value="" th:text="#{lang.change}"></option>
+                <option value="en" th:text="#{lang.eng}"></option>
+                <option value="ro" th:text="#{lang.ro}"></option>
+        </select>
+    </span>
+    <a href="#top" class="col-sm-3 nav-link text-white text-start" th:text="#{returntop}">Return on top</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,205 @@
+###############################################################################
+#################################### WEEK 1 ###################################
+#
+# GET METHOD - searchuniversity page -> type: GET ALL WHICH HAVE ...
+#
+# 1. request for status 200 - OK
+#GET http://localhost:8080/api/universities?searchValue=ka HTTP/1.1
+#Accept: application/json
+#
+# the response:
+#
+# HTTP/1.1 200
+# Content-Type: application/json
+# Transfer-Encoding: chunked
+# Date: Wed, 08 Mar 2023 21:46:30 GMT
+# Keep-Alive: timeout=60
+# Connection: keep-alive
+#
+# [
+#   {
+#     "name": "Karel de Grote",
+#     "foundingDate": "1995-09-01",
+#     "universityType": "Hogeschool"
+#   },
+#   {
+#     "name": "Karel de Kleine",
+#     "foundingDate": "1995-09-01",
+#     "universityType": "Hogeschool"
+#   }
+# ]
+#
+# 2. request for status 204 - NO CONTENT
+#GET http://localhost:8080/api/universities?searchValue=kat HTTP/1.1
+#Accept: application/json
+#
+# the response:
+#
+# HTTP/1.1 404
+# Content-Length: 0
+# Date: Wed, 08 Mar 2023 21:36:11 GMT
+# Keep-Alive: timeout=60
+# Connection: keep-alive
+#
+###############################################################################
+#
+#
+#
+###############################################################################
+# DELETE METHOD - campuses page -> type: DELETE 1
+# NOTE: consider that campus with id=1 exists before the requests
+#
+# 1. request for status 204 - NO CONTENT
+#DELETE http://localhost:8080/api/campuses/1 HTTP/1.1
+#
+# the response:
+#
+# HTTP/1.1 204
+# Date: Wed, 08 Mar 2023 21:50:09 GMT
+# Keep-Alive: timeout=60
+# Connection: keep-alive
+#
+# 2. request for status 404 - NOT FOUND
+#DELETE http://localhost:8080/api/campuses/1 HTTP/1.1
+#
+# the response:
+#
+# HTTP/1.1 404
+# Content-Length: 0
+# Date: Wed, 08 Mar 2023 21:51:13 GMT
+# Keep-Alive: timeout=60
+# Connection: keep-alive
+#
+###############################################################################
+
+
+
+
+###############################################################################
+#################################### WEEK 2 ###################################
+#
+#POST METHOD - addcampus page
+##
+## 1. request for status 201 - OK
+#POST http://localhost:8080/api/campuses HTTP/1.1
+#Accept: application/json
+#Content-Type: application/json
+#
+#{"universityName":"Karel de Grote","name":"Bernanduscentrum","address":"somewhere in groenplaats 32","postalCode":"2311","city":"Antwerpen","openingTime":"08:00","closingTime":"22:00"}
+#
+#
+## the response:
+#
+#HTTP/1.1 201
+#Content-Type: application/json
+#Transfer-Encoding: chunked
+#Date: Mon, 20 Mar 2023 03:31:09 GMT
+#Keep-Alive: timeout=60
+#Connection: keep-alive
+#
+#{
+#"campusId": 9,
+#"universityName": "Karel de Grote",
+#"name": "Bernanduscentrum",
+#"address": "somewhere in groenplaats 32",
+#"postalCode": 2311,
+#"city": "Antwerpen",
+#"openingTime": "08:00:00",
+#"closingTime": "22:00:00"
+#}
+#
+## 2. request for status 400 - BAD REQUEST
+#POST http://localhost:8080/api/campuses HTTP/1.1
+#Accept: application/json
+#Content-Type: application/json
+#
+#{"universityName":"Karel de Oude","name":"Bernanduscentrum","address":"somewhere in groenplaats 32","postalCode":"2311","city":"Antwerpen","openingTime":"08:00","closingTime":"22:00"}
+#
+## the response:
+#
+#HTTP/1.1 400
+#Content-Length: 0
+#Date: Mon, 20 Mar 2023 03:49:03 GMT
+#Connection: close
+#
+###############################################################################
+## (MERGE) PATCH METHOD - campuses page => Update 1
+#
+#
+## 1. request for status 204 - NO CONTENT
+#
+#PATCH http://localhost:8080/api/campuses/1 HTTP/1.1
+#Accept: application/json
+#Content-Type: application/json
+#
+#{"name":"Bernanduscentrum","closingTime":"12:00"}
+#
+## the response:
+#
+#HTTP/1.1 204
+#Date: Mon, 20 Mar 2023 04:03:30 GMT
+#Keep-Alive: timeout=60
+#Connection: keep-alive
+#
+## 2.request for status 400 - BAD REQUEST
+#
+#PATCH http://localhost:8080/api/campuses/1 HTTP/1.1
+#Accept: application/json
+#Content-Type: application/json
+#
+#{"name":"Bernanduscentrum","closingTime":"1200"}
+#
+## the response:
+#
+#HTTP/1.1 400
+#Content-Type: application/json
+#Transfer-Encoding: chunked
+#Date: Mon, 20 Mar 2023 04:05:21 GMT
+#Connection: close
+#
+#{
+#  "timestamp": "2023-03-20T04:05:21.158+00:00",
+#  "status": 400,
+#  "error": "Bad Request",
+#  "path": "/api/campuses/1"
+#}
+#
+## 3. request for status 404 - NOT FOUND
+#
+#PATCH http://localhost:8080/api/campuses/99999999 HTTP/1.1
+#Accept: application/json
+#Content-Type: application/json
+#
+#{"name":"Bernanduscentrum","closingTime":"12:00"}
+#
+## the response:
+#
+#HTTP/1.1 404
+#Content-Length: 0
+#Date: Mon, 20 Mar 2023 04:07:16 GMT
+#Keep-Alive: timeout=60
+#Connection: keep-alive
+#
+###############################################################################
+## CONTENT NEGOTIATION - universities
+#
+## 1. request which accepts only JSON
+#GET http://localhost:8080/api/universities/Karel de Kleine HTTP/1.1
+#Accept: application/json
+#
+## 2. request which accepts only XML
+#
+#GET http://localhost:8080/api/universities/Karel de Kleine HTTP/1.1
+#Accept: application/xml
+#
+###############################################################################
+
+#PATCH http://localhost:8080/api/campuses/1 HTTP/1.1
+#Accept: application/json
+#Content-Type: application/json
+#Cookie: Idea-c6221e56=48042f45-839d-4f8d-a631-f536294ac457; Idea-c6222216=5f71d4c3-1ac8-4347-8659-b65dae2a0f1a; Idea-c6222217=abbaf011-9531-4342-b4e4-ede6f600b0ea; JSESSIONID=EDF4F33200B058F83F03E647D293B7D0; XSRF-TOKEN=9318a9b9-7380-41a4-9262-6374f80978ee
+#X-CSRF-TOKEN: 9318a9b9-7380-41a4-9262-6374f80978ee
+#
+#{"name":"Bernanduscentrum","closingTime":"1200"}
+
+

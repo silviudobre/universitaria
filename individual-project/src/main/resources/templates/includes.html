@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <thymeleaf th:fragment="header_includes" th:remove="tag">
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="/css/bundle-site.css"/>
+        <script defer src="/js/bundle-site.js"></script>
+        <script defer src="/js/bundle-language.js"></script>
+        <meta name="_csrf" th:content="${_csrf.token}"/>
+        <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    </thymeleaf>
+</head>
+<body>
+
+</body>
+</html>

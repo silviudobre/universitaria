@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="#{sessionhistory}">Session history</title>
+  <thymeleaf th:insert="includes::header_includes" />
+</head>
+<body>
+
+<header th:insert="~{navbar::navbar(page='sessionhistory')}">navbar</header>
+
+<table class="table table-striped table-hover" style="margin-bottom: 0 !important;">
+  <thead class="table-dark sticky-top">
+  <tr>
+    <th th:text="#{pagesession}">Page visited</th>
+    <th th:text="#{timestampsession}">Date</th>
+    <th th:text="${session.nrVisits} + #{nrpagevisits}"># visits</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="currentsession:${sessions}" class="table-primary">
+    <td th:text="${currentsession.page}"> page </td>
+    <td th:text="${currentsession.timestamp}"> timestamp </td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<footer th:insert="~{footer::copyright}">&copy; Silviu Dobre</footer>
+
+</body>
+</html>

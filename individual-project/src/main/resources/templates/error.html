@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{error}">Error</title>
+    <thymeleaf th:insert="includes::header_includes" />
+</head>
+<body>
+
+<header th:insert="~{navbar::navbar(page='error')}">navbar</header>
+
+
+<img src="https://media.tenor.com/5EnGWzMZkVsAAAAC/studying-reading.gif" width=100% height="400"/>
+<p class="display-3" th:text="#{errormessage}"></p>
+
+
+<footer th:insert="~{footer::copyright}">&copy; Silviu Dobre</footer>
+
+</body>
+</html>

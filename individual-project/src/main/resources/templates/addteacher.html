@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="#{addateacher}">Add teacher</title>
+  <thymeleaf th:insert="includes::header_includes" />
+</head>
+<body>
+
+<header th:insert="~{navbar::navbar(page='addteacher')}">navbar</header>
+
+<div class="col-md-4 bg-warning py-2 my-3 rounded mx-auto text-center">
+    <h1 class="display-4 text-white" th:text="#{addateacher}">Add a teacher</h1>
+    <form th:object="${teacher}" th:action="@{/addteacher}" method="post" class="rounded bg-danger border-danger m-2">
+        <div class="form-floating pt-3">
+            <div class="text-white" th:text="#{firstname}">First name</div>
+            <input type="text" class="form-text text-black" id="firstName" name="firstName" placeholder="First name" required>
+            <div th:if="${#fields.hasErrors('firstName')}" th:text="#{generalpatternerror}" class="text-black mx-4">First name error</div>
+        </div>
+
+        <div class="form-floating pt-3">
+            <div class="text-white" th:text="#{lastname}">Last name</div>
+            <input type="text" class="form-text text-black" id="lastName" name="lastName" placeholder="Last name" required>
+            <div th:if="${#fields.hasErrors('lastName')}" th:text="#{generalpatternerror}" class="text-black mx-4">Last name error</div>
+        </div>
+
+        <div class="form-floating pt-3">
+            <div class="text-white" th:text="#{sex}">Sex</div>
+            <select id="sex" name="sex" required>
+                <option value="MALE" th:text="#{male}">Male</option>
+                <option value="FEMALE" th:text="#{female}">Female</option>
+                <option value="INTERSEX" th:text="#{intersex}">Intersex</option>
+                <option value="PREFER_NOT_TO_SAY" th:text="#{prefernottosay}" selected>Prefer not to say</option>
+            </select><br>
+            <div th:if="${#fields.hasErrors('sex')}" th:text="#{sexerror}" class="text-black mx-4">Sex error</div>
+        </div>
+
+        <div class="form-floating pt-3 pb-3">
+            <label for="submit" class="form-label"></label>
+            <input type="submit" class="btn btn-success" id="submit" name="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+<footer th:insert="~{footer::copyright}">&copy; Silviu Dobre</footer>
+
+</body>
+</html>

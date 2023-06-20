@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{teachers}">Teachers</title>
+    <thymeleaf th:insert="includes::header_includes" />
+</head>
+<body>
+
+<header th:insert="~{navbar::navbar(page='teachers')}">navbar</header>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark sticky-top">
+        <tr>
+            <th th:text="#{viewbutton.teacher}" class="fst-italic"><i>teacher details</i></th>
+            <th th:text="#{deletebutton}" class="fst-italic"><i>delete</i></th>
+            <th th:text="#{firstname}">First name</th>
+            <th th:text="#{lastname}">Last name</th>
+            <th th:text="#{sex}">Sex</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="teacher: ${teachers}" th:class="(${teacher.id}%2 ne 0) ? 'table-primary' : 'table-danger'">
+        <td> <a href="./ateacher.html" th:href="@{./ateacher(teacherId=${teacher.id})}"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-1024.png" width="50" height="40" type="button" class="btn btn-outline-info" alt="view"/></a></td>
+        <td> <a href="./teachers.html" th:href="@{./deleteTeacher(teacherId=${teacher.id})}"><img src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686907-trashcan_can_dump_recycle_bin-512.png" width="50" height="40" type="button" class="btn btn-outline-danger" alt="delete"/></a></td>
+        <td th:text="${teacher.firstName}"> firstName </td>
+        <td th:text="${teacher.lastName}"> lastName </td>
+        <td th:text="${teacher.sex}"> sex </td>
+    </tr>
+    </tbody>
+</table>
+
+<footer th:insert="~{footer::copyright}">&copy; Silviu Dobre</footer>
+
+</body>
+</html>

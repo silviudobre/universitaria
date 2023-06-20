@@ -1,0 +1,39 @@
+{
+  "name": "universitaria",
+  "version": "0.1.0",
+  "author": "Silviu Dobre",
+  "license": "AGPL-3.0",
+  "type": "module",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/silviudobre/universitaria"
+  },
+  "bugs": {
+    "url": "https://github.com/silviudobre/universitaria/issues"
+  },
+  "homepage": "https://github.com/silviudobre/universitaria#readme",
+  "dependencies": {
+      "@popperjs/core": "^2.11.7",
+      "bootstrap": "^5.2.3",
+      "bootstrap-icons": "^1.10.5",
+      "bubbly-bg": "^1.0.0",
+      "flatpickr": "^4.6.13",
+      "joi": "^17.9.2"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "html-webpack-plugin": "^5.5.1",
+    "mini-css-extract-plugin": "^2.7.5",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2"
+  }
+}
